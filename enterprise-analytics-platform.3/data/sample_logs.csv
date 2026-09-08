@@ -1,0 +1,11 @@
+timestamp,service,level,status_code,response_time_ms,message
+2026-08-08 09:00:01,etl-pipeline,INFO,200,120,ETL run started
+2026-08-08 09:00:05,etl-pipeline,INFO,200,340,Extracted 17 employee rows
+2026-08-08 09:00:07,etl-pipeline,WARNING,200,410,2 rows rejected during transform
+2026-08-08 09:00:10,dashboard-api,INFO,200,95,GET /api/employees
+2026-08-08 09:00:12,dashboard-api,ERROR,500,1250,Database timeout on employee query
+2026-08-08 09:00:15,monitoring-engine,WARNING,200,60,CPU usage above medium threshold for E1003
+2026-08-08 09:00:16,monitoring-engine,CRITICAL,200,55,CPU usage above high threshold for E1007
+2026-08-08 09:00:20,dashboard-api,INFO,200,102,GET /api/alerts
+2026-08-08 09:00:25,etl-pipeline,ERROR,500,2100,MySQL connection refused
+2026-08-08 09:00:30,dashboard-api,INFO,200,88,GET /api/dashboard-summary

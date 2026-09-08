@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enterprise Analytics &amp; Monitoring Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <h1>📊 Enterprise Data Analytics &amp; Real-Time Monitoring</h1>
+  <div class="actions">
+    <button id="runEtlBtn">▶ Run ETL</button>
+    <button id="runMonitorBtn">🔍 Run Monitoring</button>
+    <span id="lastUpdated" class="muted"></span>
+  </div>
+</header>
+
+<section class="kpis" id="kpiRow">
+  <div class="kpi-card"><div class="kpi-label">Headcount</div><div class="kpi-value" id="kpiHeadcount">--</div></div>
+  <div class="kpi-card"><div class="kpi-label">Avg CPU Usage</div><div class="kpi-value" id="kpiAvgCpu">--</div></div>
+  <div class="kpi-card kpi-warning"><div class="kpi-label">High CPU Employees</div><div class="kpi-value" id="kpiHighCpu">--</div></div>
+  <div class="kpi-card kpi-alert"><div class="kpi-label">Active Alerts</div><div class="kpi-value" id="kpiAlerts">--</div></div>
+  <div class="kpi-card"><div class="kpi-label">Last ETL Run</div><div class="kpi-value small" id="kpiLastRun">--</div></div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>CPU Usage by Department</h2>
+    <canvas id="deptChart" height="180"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>🚨 Active Alerts</h2>
+    <div class="table-wrap">
+      <table id="alertsTable">
+        <thead><tr><th>Time</th><th>Severity</th><th>Rule</th><th>Message</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>👥 Employee / CPU Monitor</h2>
+    <div class="table-wrap">
+      <table id="employeeTable">
+        <thead><tr><th>ID</th><th>Name</th><th>Department</th><th>Salary</th><th>CPU %</th><th>Status</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>🧾 Recent System Logs</h2>
+    <div class="table-wrap">
+      <table id="logsTable">
+        <thead><tr><th>Time</th><th>Service</th><th>Level</th><th>Status</th><th>Resp(ms)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>⏱ ETL Pipeline Run History</h2>
+  <div class="table-wrap">
+    <table id="runsTable">
+      <thead><tr><th>Started</th><th>Status</th><th>Extracted</th><th>Loaded</th><th>Rejected</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
